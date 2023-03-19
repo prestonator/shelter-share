@@ -36,3 +36,6 @@ yarn-error.log*
 
 # custom
 /utils/query.js
+
+# Lock Files
+yarn.lock
