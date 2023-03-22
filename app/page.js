@@ -6,7 +6,8 @@ import Image from "next/image";
 import GooglePlayButton from "@/Components/StoreButtons/GooglePlay";
 import AppleStoreButton from "@/Components/StoreButtons/AppleStore";
 import { AiOutlineCheck } from "react-icons/ai";
-import ReactPlayer from "react-player/lazy";
+import VideoPlayer from "@/Components/VideoPlayer/VideoPlayer";
+import Accordion from "@/Components/Accordion/Accordion";
 
 async function getData() {
 	const response = await getLandingPage();
@@ -77,9 +78,19 @@ export default async function Home() {
 					<h2>{landingPageData.videoHeading}</h2>
 				</div>
 				<div className={styles.videoContainer}>
-					
+					<VideoPlayer url={landingPageData.video.url} />
 				</div>
 			</section>
+			<section className={styles.faqSection}>
+				<div className={styles.faqHeading}>
+					<h2>{landingPageData.accordionHeading}</h2>
+				</div>
+				<div className={styles.faqContainer}>
+					<Accordion
+						accordionItem={landingPageData.accordionItem}
+					/>
+				</div>
+				</section>
 		</main>
 	);
 }
