@@ -2,7 +2,7 @@ import { fetchData } from "../fetch";
 import { LandingPageQuery } from "../query";
 
 export const getLandingPage = async () => {
-    const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
+	const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
 	const { data } = await fetchData(LandingPageQuery);
 	const { landingPage } = data;
 	const {
@@ -26,19 +26,15 @@ export const getLandingPage = async () => {
 			...heroSection,
 			heroImage: `${strapiUrl}${heroSection.heroImage.data.attributes.url}`,
 		},
-		heroMockup: heroMockup.data.attributes,
+		heroMockupUrl: `${strapiUrl}${heroMockup.data.attributes.url}`,
+		heroMockupAlt: heroMockup.data.attributes.alternativeText,
 		aboutHeading,
-		infoSection: infoSection.map((section) => ({
-			...section,
-			mockup: {
-				image: section.mockup.image.data.attributes,
-			},
-		})),
+		infoSection,
 		featureHeading,
 		featureSection,
-		faqHeading,
 		videoHeading,
-		video,
+		video: JSON.parse(video),
+		faqHeading,
 	};
 
 	return landingPageData;

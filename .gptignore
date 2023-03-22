@@ -1,0 +1,17 @@
+.github/*
+.git/*
+.next/*
+app/favicon.ico
+local_modules/*
+node_modules/*
+public/*
+.env
+.eslintrc.*
+.gitignore
+jsconfig.json
+next.config.js
+postcss.config.js
+README.md
+*.lock
+.gptignore
+output.txt
