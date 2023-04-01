@@ -1,5 +1,5 @@
-import { fetchData } from "../fetch";
-import { LandingPageQuery } from "../query";
+import { fetchData } from "@/utils/fetch";
+import { LandingPageQuery } from "@/utils/query";
 
 export const getLandingPage = async () => {
 	const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL;

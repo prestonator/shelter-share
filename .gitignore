@@ -35,7 +35,6 @@ yarn-error.log*
 .env
 
 # custom
-/utils/query.js
 .eslintrc.json
 
 # Lock Files
