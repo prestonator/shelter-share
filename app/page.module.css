@@ -65,9 +65,16 @@
 	color: var(--color-blue);
 }
 
+.aboutSection .aboutRow {
+	display: flex;
+	flex-direction: column;
+	gap: var(--size-7-5);
+}
+
 .aboutSection .infoText {
 	display: flex;
 	justify-content: center;
+	align-items: center;
 }
 
 .aboutSection .infoText.odd {
@@ -78,15 +85,65 @@
 	flex-direction: row;
 }
 
-.aboutSection .infoText .imageWrapper {
-	position: relative;
+.aboutSection .infoText .mockupWrapper {
 	width: var(--size-70);
 }
 
+.aboutSection .infoText .imageWrapper {
+	position: relative;
+	width: 100%;
+	height: var(--size-60);
+}
+
+.aboutSection .infoText.even .imageWrapper {
+	background: linear-gradient(104deg, #000000 0%, #1400ff 100%);
+	background-repeat: no-repeat;
+	background-size: 75% 50%;
+	background-position: center;
+}
+
+.aboutSection .infoText.odd .imageWrapper {
+	background: linear-gradient(104deg, #1400ff 0%, #000000 100%);
+	background-repeat: no-repeat;
+	background-size: 75% 50%;
+	background-position: center;
+}
+
 .aboutSection .infoText .imageWrapper img {
-	object-fit: cover;
+	object-fit: contain;
 }
 
 .aboutSection .infoText .infoTextWrapper {
 	width: var(--size-70);
+}
+
+.aboutSection .infoText .infoTextWrapper h3 {
+	font: 400 var(--size-2-5) var(--font-fancy);
+	letter-spacing: 1px;
+	margin-bottom: var(--size-1-25);
+}
+
+.aboutSection .infoText.even .infoTextWrapper h3,
+.aboutSection .infoText.even .infoTextWrapper p {
+	text-align: left;
+}
+
+.aboutSection .infoText.odd .infoTextWrapper h3,
+.aboutSection .infoText.odd .infoTextWrapper p {
+	text-align: right;
+}
+
+.aboutSection .infoText .infoTextWrapper p,
+.aboutSection .infoText .infoTextWrapper ol {
+	font: 400 var(--size-1-25) / 1.6 var(--font-body);
+}
+
+.aboutSection .infoText .infoTextWrapper p:not(:last-child) {
+	margin-bottom: var(--size-1-25);
+}
+
+.aboutSection .infoText .infoTextWrapper ol {
+}
+
+.aboutSection .infoText .infoTextWrapper ol li {
 }

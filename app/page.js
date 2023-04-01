@@ -49,27 +49,31 @@ export default async function Home() {
 				<div className={styles.aboutHeading}>
 					<h2>{landingPageData.aboutHeading}</h2>
 				</div>
-				{landingPageData.infoSection.map((info, index) => {
-					return (
-						<div
-							key={info.infoText}
-							className={`${styles.infoText} ${
-								index % 2 === 0 ? styles.even : styles.odd
-							}`}
-						>
-							<div className={styles.imageWrapper}>
-								<Image
-									src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${info.mockup.image.data.attributes.url}`}
-									alt={info.mockup.alternativeText}
-									fill
-								/>
+				<div className={styles.aboutRow}>
+					{landingPageData.infoSection.map((info, index) => {
+						return (
+							<div
+								key={info.infoText}
+								className={`${styles.infoText} ${
+									index % 2 === 0 ? styles.even : styles.odd
+								}`}
+							>
+								<div className={styles.mockupWrapper}>
+									<div className={styles.imageWrapper}>
+										<Image
+											src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${info.mockup.image.data.attributes.url}`}
+											alt={info.mockup.alternativeText}
+											fill
+										/>
+									</div>
+								</div>
+								<div className={styles.infoTextWrapper}>
+									<ReactMarkdown>{`${info.infoText.richText}`}</ReactMarkdown>
+								</div>
 							</div>
-							<div className={styles.infoTextWrapper}>
-								<ReactMarkdown>{`${info.infoText.richText}`}</ReactMarkdown>
-							</div>
-						</div>
-					);
-				})}
+						);
+					})}
+				</div>
 			</section>
 			<section className={styles.featureSection} id="features">
 				<div className={styles.featureHeading}>
