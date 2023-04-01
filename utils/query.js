@@ -55,3 +55,15 @@ fragment MediaAttributes on UploadFileEntityResponse {
   }
 }
 `;
+
+export const MediaQuery = `
+query UploadFile($uploadFileId: ID) {
+  uploadFile(id: $uploadFileId) {
+    data {
+      attributes {
+        url
+        alternativeText
+      }
+    }
+  }
+}`;

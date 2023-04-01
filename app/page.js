@@ -23,6 +23,8 @@ export default async function Home() {
 				className={styles.heroSection}
 				style={{
 					backgroundImage: `url(${landingPageData.heroSection.heroImage}), linear-gradient(109.26deg, rgba(0, 0, 0, 0.9) 1.07%, rgba(20, 0, 255, 0.9) 100%)`,
+					backgroundRepeat: "no-repeat",
+					backgroundSize: "cover",
 				}}
 			>
 				<div className={styles.heroTextContainer}>
@@ -43,25 +45,33 @@ export default async function Home() {
 					<GooglePlayButton />
 				</div>
 			</section>
-			<section className={styles.aboutSection}>
+			<section className={styles.aboutSection} id="about">
 				<div className={styles.aboutHeading}>
 					<h2>{landingPageData.aboutHeading}</h2>
 				</div>
-				{landingPageData.infoSection.map((info) => {
+				{landingPageData.infoSection.map((info, index) => {
 					return (
-						<div key={info.infoText} className={styles.infoText}>
-							<Image
-								src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${info.mockup.image.data.attributes.url}`}
-								alt={info.mockup.alternativeText}
-								width={100}
-								height={100}
-							/>
-							<ReactMarkdown>{`${info.infoText.richText}`}</ReactMarkdown>
+						<div
+							key={info.infoText}
+							className={`${styles.infoText} ${
+								index % 2 === 0 ? styles.even : styles.odd
+							}`}
+						>
+							<div className={styles.imageWrapper}>
+								<Image
+									src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${info.mockup.image.data.attributes.url}`}
+									alt={info.mockup.alternativeText}
+									fill
+								/>
+							</div>
+							<div className={styles.infoTextWrapper}>
+								<ReactMarkdown>{`${info.infoText.richText}`}</ReactMarkdown>
+							</div>
 						</div>
 					);
 				})}
 			</section>
-			<section className={styles.featureSection}>
+			<section className={styles.featureSection} id="features">
 				<div className={styles.featureHeading}>
 					<h2>{landingPageData.featureHeading}</h2>
 				</div>
@@ -74,7 +84,7 @@ export default async function Home() {
 					);
 				})}
 			</section>
-			<section className={styles.videoSection}>
+			<section className={styles.videoSection} id="video">
 				<div className={styles.videoHeading}>
 					<h2>{landingPageData.videoHeading}</h2>
 				</div>
@@ -82,7 +92,7 @@ export default async function Home() {
 					<VideoPlayer url={landingPageData.video.url} />
 				</div>
 			</section>
-			<section className={styles.faqSection}>
+			<section className={styles.faqSection} id="faq">
 				<div className={styles.faqHeading}>
 					<h2>{landingPageData.accordionHeading}</h2>
 				</div>

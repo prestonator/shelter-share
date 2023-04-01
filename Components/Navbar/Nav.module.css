@@ -1,0 +1,31 @@
+.navWrapper {
+	position: fixed;
+	width: 100%;
+}
+
+.navContainer {
+	display: flex;
+	align-items: center;
+	gap: var(--size-7-5);
+	padding: var(--size-1-5) var(--size-3);
+}
+
+.navItem {
+	list-style-type: none;
+}
+
+.navLogo {
+	position: relative;
+	width: var(--size-30);
+	height: var(--size-10);
+}
+
+.logo {
+	object-fit: contain;
+}
+
+.navButton {
+	background-color: transparent;
+	color: var(--color-white);
+	font: 600 var(--size-2-5) var(--font-body);
+}

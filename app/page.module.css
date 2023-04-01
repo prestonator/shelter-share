@@ -7,18 +7,21 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	padding-top: var(--size-10);
-	padding-bottom: var(--size-25);
+	padding: var(--size-25) var(--size-5);
 }
 
 .heroSection .heroTextContainer h1 {
 	color: var(--color-white);
+	font: 500 var(--size-4) / 2 var(--font-fancy);
+	letter-spacing: 2px;
+	margin-bottom: var(--size-1-25);
 }
 
 .heroSection .heroTextContainer p {
 	color: var(--color-white);
 	max-width: var(--size-75);
 	text-align: center;
+	font: 500 var(--size-1-5) / 1.8 var(--font-body);
 }
 
 .ctaSection {
@@ -45,4 +48,45 @@
 
 .ctaSection .ctaButtonContainer a {
 	width: var(--size-25);
+}
+
+.aboutSection {
+	padding-top: var(--size-7-5);
+}
+
+.aboutHeading {
+	margin-bottom: var(--size-5);
+}
+
+.aboutHeading h2 {
+	text-align: center;
+	font: 600 var(--size-5) var(--font-fancy);
+	letter-spacing: 3px;
+	color: var(--color-blue);
+}
+
+.aboutSection .infoText {
+	display: flex;
+	justify-content: center;
+}
+
+.aboutSection .infoText.odd {
+	flex-direction: row-reverse;
+}
+
+.aboutSection .infoText.even {
+	flex-direction: row;
+}
+
+.aboutSection .infoText .imageWrapper {
+	position: relative;
+	width: var(--size-70);
+}
+
+.aboutSection .infoText .imageWrapper img {
+	object-fit: cover;
+}
+
+.aboutSection .infoText .infoTextWrapper {
+	width: var(--size-70);
 }
