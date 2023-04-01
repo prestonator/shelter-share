@@ -16,13 +16,13 @@ async function getData() {
 
 export default async function Home() {
 	const landingPageData = await getData();
-	console.log(landingPageData.video.url);
+	// console.log(landingPageData.video.url);
 	return (
 		<main className={styles.main}>
 			<section
 				className={styles.heroSection}
 				style={{
-					backgroundImage: `linear-gradient(109.26deg, rgba(0, 0, 0, 0.9) 1.07%, rgba(20, 0, 255, 0.9) 100%), url(${landingPageData.heroSection.heroImage})`,
+					backgroundImage: `url(${landingPageData.heroSection.heroImage}), linear-gradient(109.26deg, rgba(0, 0, 0, 0.9) 1.07%, rgba(20, 0, 255, 0.9) 100%)`,
 				}}
 			>
 				<div className={styles.heroTextContainer}>
@@ -35,11 +35,12 @@ export default async function Home() {
 						src={landingPageData.heroMockupUrl}
 						alt={landingPageData.heroMockupAlt}
 						fill
+						className={styles.image}
 					/>
 				</div>
 				<div className={styles.ctaButtonContainer}>
-					<GooglePlayButton />
 					<AppleStoreButton />
+					<GooglePlayButton />
 				</div>
 			</section>
 			<section className={styles.aboutSection}>
@@ -86,11 +87,9 @@ export default async function Home() {
 					<h2>{landingPageData.accordionHeading}</h2>
 				</div>
 				<div className={styles.faqContainer}>
-					<Accordion
-						accordionItem={landingPageData.accordionItem}
-					/>
+					<Accordion accordionItem={landingPageData.accordionItem} />
 				</div>
-				</section>
+			</section>
 		</main>
 	);
 }

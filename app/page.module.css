@@ -1,0 +1,48 @@
+.heroSection {
+	background-blend-mode: multiply;
+}
+
+.heroSection .heroTextContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding-top: var(--size-10);
+	padding-bottom: var(--size-25);
+}
+
+.heroSection .heroTextContainer h1 {
+	color: var(--color-white);
+}
+
+.heroSection .heroTextContainer p {
+	color: var(--color-white);
+	max-width: var(--size-75);
+	text-align: center;
+}
+
+.ctaSection {
+	position: relative;
+}
+
+.ctaSection .ctaMockup {
+	position: absolute;
+	width: 100%;
+	height: var(--size-40);
+	transform: translateY(calc(-1 * var(--size-15)));
+	.image {
+		object-fit: contain;
+	}
+}
+
+.ctaSection .ctaButtonContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding-top: var(--size-25);
+	gap: var(--size-1-25);
+}
+
+.ctaSection .ctaButtonContainer a {
+	width: var(--size-25);
+}
