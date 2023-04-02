@@ -77,3 +77,14 @@
 .footer .copyright span svg {
     margin: 0 var(--size-0-5);
 }
+
+
+@media screen and (max-width: 500px) {
+	.footerForm div:nth-last-of-type(3) {
+		flex-direction: column;
+	}
+	.footer .copyright span {
+		flex-direction: column;
+		gap: var(--size-0-5);
+	}
+}

@@ -10,6 +10,7 @@
 .navContainer {
 	display: flex;
 	align-items: center;
+	flex-wrap: wrap;
 	gap: var(--size-7-5);
 	padding: var(--size-1-25) var(--size-3);
 }
@@ -33,3 +34,5 @@
 	color: var(--color-white);
 	font: 600 var(--size-2-5) var(--font-body);
 }
+
+

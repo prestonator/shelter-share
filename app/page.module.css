@@ -15,6 +15,7 @@
 	font: 500 var(--size-4) / 2 var(--font-fancy);
 	letter-spacing: 2px;
 	margin-bottom: var(--size-1-25);
+	text-align: center;
 }
 
 .heroSection .heroTextContainer p {
@@ -234,4 +235,19 @@
 
 .faqSection .faqContainer {
 	
+}
+
+
+@media screen and (max-width: 768px) {
+	.aboutSection .infoText.odd,
+	.aboutSection .infoText.even  { 
+		flex-direction: column;
+		.infoTextWrapper {
+			width: 85%;
+		}
+		.infoTextWrapper h3,
+		.infoTextWrapper p {
+			text-align: center;
+		}
+	}
 }

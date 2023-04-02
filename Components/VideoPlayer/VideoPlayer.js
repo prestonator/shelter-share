@@ -5,7 +5,7 @@ import ReactPlayer from "react-player";
 const VideoPlayer = ({ url }) => {
 	return (
 		<div>
-			<ReactPlayer url={url} />
+			<ReactPlayer url={url} width="var(--size-115)" height="var(--size-65)" />
 		</div>
 	);
 };
