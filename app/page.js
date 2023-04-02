@@ -83,7 +83,9 @@ export default async function Home() {
 					return (
 						<div key={feature.featureText} className={styles.featureText}>
 							<AiOutlineCheck />
-							<ReactMarkdown>{`${feature.featureText}`}</ReactMarkdown>
+							<div className={`${styles.featureContent}`}>
+								<ReactMarkdown>{`${feature.featureText}`}</ReactMarkdown>
+							</div>
 						</div>
 					);
 				})}

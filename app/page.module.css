@@ -147,3 +147,87 @@
 
 .aboutSection .infoText .infoTextWrapper ol li {
 }
+
+.featureSection {
+	padding-top: var(--size-7-5);
+}
+
+.featureSection .featureHeading {
+	margin-bottom: var(--size-5);
+}
+
+.featureSection .featureHeading h2 {
+	text-align: center;
+	font: 600 var(--size-5) var(--font-fancy);
+	letter-spacing: 3px;
+	color: var(--color-blue);
+}
+
+.featureSection .featureText {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: var(--size-7-5);
+	margin-bottom: var(--size-5);
+}
+
+.featureSection .featureText svg {
+	flex-basis: var(--size-10);
+	width: var(--size-7-5);
+	height: var(--size-7-5);
+	color: green;
+}
+
+.featureSection .featureText .featureContent {
+	flex-basis: var(--size-70);
+}
+
+.featureSection .featureText .featureContent h3 {
+	font: 400 var(--size-2-5) var(--font-fancy);
+	letter-spacing: 1px;
+	margin-bottom: var(--size-1-25);
+}
+
+.featureSection .featureText .featureContent p {
+	font: 400 var(--size-1-25) / 1.6 var(--font-body);
+}
+
+.videoSection {
+	padding-top: var(--size-7-5);
+}
+
+.videoSection .videoHeading {
+	margin-bottom: var(--size-5);
+}
+
+.videoSection .videoHeading h2 {
+	text-align: center;
+	font: 600 var(--size-5) var(--font-fancy);
+	letter-spacing: 3px;
+	color: var(--color-blue);
+}
+
+.videoSection .videoContainer {
+	display: flex;
+    justify-content: center;
+}
+
+.videoSection .videoContainer > div {
+	box-shadow: var(--default-box-shadow);
+}
+
+.faqSection {
+	padding-top: var(--size-7-5);
+}
+
+.faqSection .faqHeading {
+	margin-bottom: var(--size-5);
+}
+
+.faqSection .faqHeading h2 {
+	text-align: center;
+	font: 600 var(--size-5) var(--font-fancy);
+	letter-spacing: 3px;
+	color: var(--color-blue);
+}
