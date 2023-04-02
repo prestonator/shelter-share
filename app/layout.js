@@ -1,6 +1,7 @@
 import "./globals.css";
 import Navbar from "@/Components/Navbar/Navbar";
 import NavLogo from "@/Components/Navbar/Logo";
+import Footer from "@/Components/Footer/Footer";
 import { playfair, sofia } from "@/utils/fonts";
 
 export const metadata = {
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
 					<NavLogo />
 				</Navbar>
 				{children}
+				<Footer />
 			</body>
 		</html>
 	);

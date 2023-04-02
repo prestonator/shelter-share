@@ -210,7 +210,7 @@
 
 .videoSection .videoContainer {
 	display: flex;
-    justify-content: center;
+	justify-content: center;
 }
 
 .videoSection .videoContainer > div {
@@ -230,4 +230,8 @@
 	font: 600 var(--size-5) var(--font-fancy);
 	letter-spacing: 3px;
 	color: var(--color-blue);
+}
+
+.faqSection .faqContainer {
+	
 }

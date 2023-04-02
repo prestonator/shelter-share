@@ -31,7 +31,7 @@ export default async function Home() {
 					<ReactMarkdown>{`${landingPageData.heroSection.heroText}`}</ReactMarkdown>
 				</div>
 			</section>
-			<section className={styles.ctaSection}>
+			<section className={styles.ctaSection} id="cta">
 				<div className={styles.ctaMockup}>
 					<Image
 						src={landingPageData.heroMockupUrl}
