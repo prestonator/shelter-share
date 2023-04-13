@@ -111,6 +111,11 @@
 }
 
 @media screen and (min-width: 800px) {
+	.mobileNavContainer,
+	.checkbox,
+	.hamburgerLines {
+		display: none;
+	}
 }
 
 .navWrapper {
