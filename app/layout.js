@@ -1,6 +1,7 @@
 import "./globals.css";
 import Navbar from "@/Components/Navbar/Navbar";
-import NavLogo from "@/Components/Navbar/Logo";
+import NavItem from "@/Components/Navbar/NavItem";
+import { onBtnClick } from "@/utils/helpers";
 import Footer from "@/Components/Footer/Footer";
 import { playfair, sofia } from "@/utils/fonts";
 
@@ -19,13 +20,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
 	return (
-		<html
-			lang="en"
-			className={`${playfair.variable} ${sofia.variable}`}
-		>
+		<html lang="en" className={`${playfair.variable} ${sofia.variable}`}>
 			<body>
 				<Navbar>
-					<NavLogo />
+					<NavItem onBtnClick={onBtnClick} />
 				</Navbar>
 				{children}
 				<Footer />

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import { useMediaQuery } from "react-responsive";
 import { debounce } from "./debounce";
-import { onBtnClick } from "@/utils/helpers";
 import styles from "./Nav.module.css";
 
 const Navbar = ({ children }) => {
@@ -10,10 +10,17 @@ const Navbar = ({ children }) => {
 	const [prevScrollPos, setPrevScrollPos] = useState(0);
 	const [visible, setVisible] = useState(true);
 	const [isNavbarOverCta, setIsNavbarOverCta] = useState(false);
-
+	// Hamburger menu stuff
+	const [className, setClassName] = useState(styles.desktopNavContainer);
+	const [isChecked, setIsChecked] = useState(false);
+	const breakpoint = useMediaQuery({ minWidth: 800 });
+	useEffect(() => {
+		setClassName(
+			breakpoint ? styles.desktopNavContainer : styles.mobileNavContainer
+		);
+	}, [breakpoint]);
 	// Create a reference to the navbar component
 	const navRef = useRef(null);
-
 
 	const ctaRef = useRef(null);
 
@@ -62,45 +69,28 @@ const Navbar = ({ children }) => {
 	const navbarClassName = isNavbarOverCta ? styles.navbarOverCta : "";
 	return (
 		<nav
-			className={`${styles.navWrapper} ${navbarClassName}`}
+			className={`${styles.navWrapper} ${navbarClassName} ${className}`}
 			style={stickyStyles}
 			ref={navRef}
 		>
-			<ul className={styles.navContainer}>
+			<ul
+				className={`${styles.navContainer} ${isChecked ? styles.showNav : ""}`}
+			>
 				{children}
-				<li className={styles.navItem}>
-					<button
-						goto="about"
-						onClick={onBtnClick}
-						className={styles.navButton}
-					>
-						About Us
-					</button>
-				</li>
-				<li className={styles.navItem}>
-					<button
-						goto="features"
-						onClick={onBtnClick}
-						className={styles.navButton}
-					>
-						Our Features
-					</button>
-				</li>
-				<li className={styles.navItem}>
-					<button
-						goto="video"
-						onClick={onBtnClick}
-						className={styles.navButton}
-					>
-						Our Story
-					</button>
-				</li>
-				<li className={styles.navItem}>
-					<button goto="faq" onClick={onBtnClick} className={styles.navButton}>
-						FAQ
-					</button>
-				</li>
 			</ul>
+			<input
+				className={styles.checkbox}
+				type="checkbox"
+				name=""
+				id=""
+				aria-label="Menu"
+				onChange={() => setIsChecked(!isChecked)}
+			/>
+			<div className={styles.hamburgerLines}>
+				<span className={`${styles.line} ${styles.lineOne}`}></span>
+				<span className={`${styles.line} ${styles.lineTwo}`}></span>
+				<span className={`${styles.line} ${styles.lineThree}`}></span>
+			</div>
 		</nav>
 	);
 };
