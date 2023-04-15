@@ -3,8 +3,9 @@ import FooterForm from "./parts/FooterForm";
 import { BsLinkedin, BsInstagram, BsFacebook } from "react-icons/bs";
 import { AiOutlineCopyright } from "react-icons/ai";
 
-const Footer = () => {
-    const currentYear = new Date().getFullYear();
+
+const Footer = async () => {
+	const currentYear = new Date().getFullYear();
 
 	return (
 		<footer className={styles.footer}>

@@ -143,12 +143,6 @@
 	margin-bottom: var(--size-1-25);
 }
 
-.aboutSection .infoText .infoTextWrapper ol {
-}
-
-.aboutSection .infoText .infoTextWrapper ol li {
-}
-
 .featureSection {
 	padding-top: var(--size-7-5);
 }
@@ -233,8 +227,33 @@
 	color: var(--color-blue);
 }
 
-.faqSection .faqContainer {
-	
+.poweredBySection {
+	padding: var(--size-7-5) 0;
+}
+
+.poweredBySection h2 {
+	text-align: center;
+	font: 600 var(--size-5) var(--font-fancy);
+	letter-spacing: 3px;
+	color: var(--color-blue);
+	margin-bottom: var(--size-5);
+}
+
+.poweredBySection .poweredByContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: var(--size-20);
+}
+
+.poweredByContainer .poweredByWrapper {
+	position: relative;
+	width: var(--size-25);
+	height: var(--size-25);
+}
+
+.poweredByContainer .poweredByWrapper .image {
+	object-fit: contain;
 }
 
 

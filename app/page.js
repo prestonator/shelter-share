@@ -8,15 +8,22 @@ import AppleStoreButton from "@/Components/StoreButtons/AppleStore";
 import { AiOutlineCheck } from "react-icons/ai";
 import VideoPlayer from "@/Components/VideoPlayer/VideoPlayer";
 import Accordion from "@/Components/Accordion/Accordion";
+import { getMediaData } from "@/utils/fetch/mediaAPI";
+
+async function getLogos() {
+	const [ouLogo, bbLogo] = await getMediaData([13, 12]);
+	return [ouLogo, bbLogo];
+}
 
 async function getData() {
 	const response = await getLandingPage();
+	const [ouLogo, bbLogo] = await getMediaData([13, 12]);
 	return response;
 }
 
 export default async function Home() {
 	const landingPageData = await getData();
-	// console.log(landingPageData.video.url);
+	const [ouLogo, bbLogo] = await getLogos();
 	return (
 		<main className={styles.main}>
 			<section
@@ -104,6 +111,31 @@ export default async function Home() {
 				</div>
 				<div className={styles.faqContainer}>
 					<Accordion accordionItem={landingPageData.accordionItem} />
+				</div>
+			</section>
+			<section className={styles.poweredBySection} id="poweredBy">
+				<h2>Powered By:</h2>
+				<div className={styles.poweredByContainer}>
+					<div className={`${styles.poweredBy}`}>
+						<div className={styles.poweredByWrapper}>
+							<Image
+								src={bbLogo.fullUrl}
+								alt={bbLogo.altText}
+								fill
+								className={styles.image}
+							/>
+						</div>
+					</div>
+					<div className={`${styles.poweredBy}`}>
+						<div className={styles.poweredByWrapper}>
+							<Image
+								src={ouLogo.fullUrl}
+								alt={ouLogo.altText}
+								fill
+								className={styles.image}
+							/>
+						</div>
+					</div>
 				</div>
 			</section>
 		</main>
