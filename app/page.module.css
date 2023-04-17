@@ -206,10 +206,31 @@
 .videoSection .videoContainer {
 	display: flex;
 	justify-content: center;
+	margin-bottom: var(--size-5);
 }
 
 .videoSection .videoContainer > div {
 	box-shadow: var(--default-box-shadow);
+}
+
+.videoSection .videoText {
+	max-width: var(--size-125);
+	margin: auto;
+}
+
+.videoSection .videoText .ourStoryContent p {
+	font: 400 var(--size-1-25) / 1.6 var(--font-body);
+	margin-bottom: var(--size-1-25);
+}
+
+.videoSection .videoText .ourStoryContent li {
+	list-style-type: disc;
+	font: 400 var(--size-1-25) / 1.6 var(--font-body);
+}
+
+.videoSection .videoText .ourStoryContent ul {
+	margin-bottom: var(--size-1-25);
+	list-style-position: inside;
 }
 
 .faqSection {
@@ -256,10 +277,9 @@
 	object-fit: contain;
 }
 
-
 @media screen and (max-width: 768px) {
 	.aboutSection .infoText.odd,
-	.aboutSection .infoText.even  { 
+	.aboutSection .infoText.even {
 		flex-direction: column;
 		.infoTextWrapper {
 			width: 85%;

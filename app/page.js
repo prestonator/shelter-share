@@ -104,6 +104,15 @@ export default async function Home() {
 				<div className={styles.videoContainer}>
 					<VideoPlayer url={landingPageData.video.url} />
 				</div>
+				<div className={styles.videoText}>
+					{landingPageData.ourStoryContent.map((story) => {
+						return (
+							<div className={`${styles.ourStoryContent}`} key={story.richText}>
+								<ReactMarkdown>{`${story.richText}`}</ReactMarkdown>
+							</div>
+						);
+					})}
+				</div>
 			</section>
 			<section className={styles.faqSection} id="faq">
 				<div className={styles.faqHeading}>

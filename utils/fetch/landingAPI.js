@@ -16,6 +16,7 @@ export const getLandingPage = async () => {
 		featureSection,
 		videoHeading,
 		video,
+		ourStoryContent,
 		accordion,
 	} = landingPage.data.attributes;
 
@@ -34,6 +35,7 @@ export const getLandingPage = async () => {
 		featureSection,
 		videoHeading,
 		video: JSON.parse(video),
+		ourStoryContent,
 		accordionHeading: accordion.accordionHeading,
 		accordionItem: accordion.accordionItem,
 	};

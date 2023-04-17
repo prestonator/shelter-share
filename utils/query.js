@@ -34,6 +34,9 @@ query LandingPage {
         }
         videoHeading
         video
+        ourStoryContent {
+          richText
+        }
         accordion {
           accordionHeading
           accordionItem {
