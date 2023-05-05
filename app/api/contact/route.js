@@ -1,35 +1,42 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-// Config
+// Mail configuration with environment variables
 const mailConfig = {
 	host: "smtp.gmail.com",
-	port: 465, // or 587
-	secure: true, // true for 465, false for other ports
+	port: 465,
+	secure: true,
 	auth: {
-		user: "shelter.share.webmaster@gmail.com",
+		user: process.env.WEBMASTER_EMAIL,
 		pass: process.env.WEBMASTER_PASSWORD,
 	},
 };
 
 const adminEmail = "Robert @ Shelter Share <shelter.share.webmaster@gmail.com>";
 
-// Function for grabbing template files
+// Function for loading email template files
 async function getPubFile(file) {
 	const res = await fetch(
-		`${NEXT_PUBLIC_PRODUCTION_URL}/emailTemplates/${file}`
+		`${process.env.NEXT_PUBLIC_PRODUCTION_URL}/emailTemplates/${file}`
 	);
-	console.log(res);
 
+	// If the response is not ok, return null
 	if (!res.ok) {
-		throw new Error("Network response was not ok");
+		return null;
 	}
 
-	const data = await res.text();
-	console.log(data);
-	return data;
+	return await res.text();
 }
 
+// Function for processing email templates with placeholders
+function processTemplate(template, placeholders) {
+	return Object.entries(placeholders).reduce(
+		(result, [key, value]) => result.replace(`%${key}%`, value),
+		template
+	);
+}
+
+// Function for sending email using async/await and returning a Promise
 async function sendMailAsync(transporter, mailOptions) {
 	return new Promise((resolve, reject) => {
 		transporter.sendMail(mailOptions, (error, info) => {
@@ -42,83 +49,96 @@ async function sendMailAsync(transporter, mailOptions) {
 	});
 }
 
+// POST function for handling email sending
 export async function POST(req) {
-	const res = await req.json();
-	const { name, email, message, phone } = res;
-	// Create our Nodemailer transport handler
+	const requestData = await req.json();
+	const { name, email, message, phone } = requestData;
+
+	// Create Nodemailer transport handler
 	let transporter = nodemailer.createTransport(mailConfig);
 
-	// Fetch our template files
+	// Load email templates
 	const template = await getPubFile("template.html");
 	const custHtml = await getPubFile("customer.html");
 	const adminHtml = await getPubFile("admin.html");
 	const custTxt = await getPubFile("customer.txt");
 	const adminTxt = await getPubFile("admin.txt");
 
+	// Check if any template failed to load and return an error response
+	if (!template || !custHtml || !adminHtml || !custTxt || !adminTxt) {
+		return NextResponse.error(500, "Error loading email templates");
+	}
+
 	// Format our recipient email address
 	const recipEmail = `${name} <${email}>`;
 
-	// Format our customer-bound email from received form data
-	let sendHtml = template
-		.replace("%BODY%", custHtml)
-		.replace("%NAME%", name)
-		.replace("%EMAIL%", email)
-		.replace("%PHONE%", phone)
-		.replace("%MESSAGE%", message);
+	/// Process customer email template
+	let sendHtml = processTemplate(template, {
+		BODY: custHtml,
+		NAME: name,
+		EMAIL: email,
+		PHONE: phone,
+		MESSAGE: message,
+	});
 
-	let sendTxt = custTxt
-		.replace("%NAME%", name)
-		.replace("%EMAIL%", email)
-		.replace("%MESSAGE%", message);
+	let sendTxt = processTemplate(custTxt, {
+		NAME: name,
+		EMAIL: email,
+		MESSAGE: message,
+	});
 
-	// Customer Mail Data
+	// Customer email data
 	const custMailData = {
 		from: adminEmail,
-		to: recipEmail, // list of receivers
-		subject: "Message Received ✔", // Subject line
-		text: sendTxt, // plain text body
-		html: sendHtml, // html body
+		to: recipEmail,
+		subject: "Message Received ✔",
+		text: sendTxt,
+		html: sendHtml,
 	};
 
+	// Send customer email
 	try {
 		const custInfo = await sendMailAsync(transporter, custMailData);
 		console.log(`Email sent: ${custInfo.response}`);
-		res.status(200).send("Message sent");
 	} catch (error) {
 		console.log(error);
-		res.status(500).send("Error sending message");
+		return NextResponse.error(500, "Error sending message");
 	}
 
-	sendHtml = template
-		.replace("%BODY%", adminHtml)
-		.replace("%NAME%", name)
-		.replace("%EMAIL%", email)
-		.replace("%PHONE%", phone)
-		.replace("%MESSAGE%", message);
+	// Process admin email template
+	sendHtml = processTemplate(template, {
+		BODY: adminHtml,
+		NAME: name,
+		EMAIL: email,
+		PHONE: phone,
+		MESSAGE: message,
+	});
 
-	sendTxt = adminTxt
-		.replace("%NAME%", name)
-		.replace("%EMAIL%", email)
-		.replace("%PHONE%", phone)
-		.replace("%MESSAGE%", message);
+	sendTxt = processTemplate(adminTxt, {
+		NAME: name,
+		EMAIL: email,
+		PHONE: phone,
+		MESSAGE: message,
+	});
 
-	// Admin Mail Data
+	// Admin email data
 	const adminMailData = {
 		from: recipEmail,
-		to: adminEmail, // list of receivers
-		subject: `New Message From ${name}`, // Subject line
-		text: sendTxt, // plain text body
-		html: sendHtml, // html body
+		to: adminEmail,
+		subject: `New Message From ${name}`,
+		text: sendTxt,
+		html: sendHtml,
 	};
 
+	// Send admin email
 	try {
 		const adminInfo = await sendMailAsync(transporter, adminMailData);
 		console.log(`Email sent: ${adminInfo.response}`);
-		res.status(200).send("Message sent");
 	} catch (error) {
 		console.log(error);
-		res.status(500).send("Error sending message");
+		return NextResponse.error(500, "Error sending message");
 	}
 
-	return NextResponse.json({ res });
+	// Return success response
+	return NextResponse.json({ message: "Message sent" });
 }
