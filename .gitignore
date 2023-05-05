@@ -39,3 +39,6 @@ yarn-error.log*
 
 # Lock Files
 yarn.lock
+
+output.txt
+.gptignore

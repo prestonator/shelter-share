@@ -1,3 +1,4 @@
+.git/*
 .github/*
 .vscode/*
 local_modules/*
@@ -5,7 +6,6 @@ node_modules/*
 public/icons/*
 .eslintrc.json
 .gitignore
-.gptignore
 jsconfig.json
 yarn.lock
 **/*.css
