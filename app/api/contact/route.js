@@ -30,6 +30,18 @@ async function getPubFile(file) {
 	return data;
 }
 
+async function sendMailAsync(transporter, mailOptions) {
+	return new Promise((resolve, reject) => {
+		transporter.sendMail(mailOptions, (error, info) => {
+			if (error) {
+				reject(error);
+			} else {
+				resolve(info);
+			}
+		});
+	});
+}
+
 export async function POST(req) {
 	const res = await req.json();
 	const { name, email, message, phone } = res;
@@ -68,18 +80,14 @@ export async function POST(req) {
 		html: sendHtml, // html body
 	};
 
-
-	// Send our customer-bound email
-	transporter.sendMail(custMailData, (error, info) => {
-		if (error) {
-			console.log(error);
-			res.status(500).send("Error sending message");
-		} else {
-			console.log(`Email sent: ${info.response}`);
-			res.status(200).send("Message sent");
-		}
-	});
-
+	try {
+		const custInfo = await sendMailAsync(transporter, custMailData);
+		console.log(`Email sent: ${custInfo.response}`);
+		res.status(200).send("Message sent");
+	} catch (error) {
+		console.log(error);
+		res.status(500).send("Error sending message");
+	}
 
 	sendHtml = template
 		.replace("%BODY%", adminHtml)
@@ -103,16 +111,14 @@ export async function POST(req) {
 		html: sendHtml, // html body
 	};
 
-	transporter.sendMail(adminMailData, (error, info) => {
-		if (error) {
-			console.log(error);
-			res.status(500).send("Error sending message");
-		} else {
-			console.log(`Email sent: ${info.response}`);
-			res.status(200).send("Message sent");
-		}
-	});
-
+	try {
+		const adminInfo = await sendMailAsync(transporter, adminMailData);
+		console.log(`Email sent: ${adminInfo.response}`);
+		res.status(200).send("Message sent");
+	} catch (error) {
+		console.log(error);
+		res.status(500).send("Error sending message");
+	}
 
 	return NextResponse.json({ res });
 }
