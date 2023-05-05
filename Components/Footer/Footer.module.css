@@ -23,7 +23,7 @@
 	align-items: center;
 	justify-content: center;
 	gap: var(--size-0-5);
-    margin-bottom: var(--size-5);
+	margin-bottom: var(--size-5);
 }
 
 .footerForm div:nth-last-of-type(3) {
@@ -52,32 +52,41 @@
 }
 
 .footer .socials {
-    display: flex;
-    gap: var(--size-7-5);
-    margin-bottom: var(--size-3-5);
+	display: flex;
+	gap: var(--size-7-5);
+	margin-bottom: var(--size-3-5);
 }
 
 .footer .socials a,
 .footer .socials a svg {
-    color: var(--color-white);
-    width: var(--size-3-5);
-    height: var(--size-3-5);
-}
-
-.footer .copyright {
+	color: var(--color-white);
+	width: var(--size-3-5);
+	height: var(--size-3-5);
 }
 
 .footer .copyright span {
-    color: var(--color-white);
-    display: flex;
-    align-items: center;
-    font: 400 var(--size-1-25) / 1.6 var(--font-body);
+	color: var(--color-white);
+	display: flex;
+	align-items: center;
+	font: 400 var(--size-1-25) / 1.6 var(--font-body);
 }
 
 .footer .copyright span svg {
-    margin: 0 var(--size-0-5);
+	margin: 0 var(--size-0-5);
 }
 
+.footer .submitHeader {
+	font: 400 var(--size-2-5) var(--font-fancy);
+	letter-spacing: 1px;
+	margin-bottom: var(--size-1-25);
+	color: var(--color-white);
+}
+
+.footer .submitBody {
+	font: 300 var(--size-1-25) / 1.6 var(--font-body);
+    margin-bottom: var(--size-2-5);
+	color: var(--color-white);
+}
 
 @media screen and (max-width: 500px) {
 	.footerForm div:nth-last-of-type(3) {
