@@ -16,7 +16,9 @@ const adminEmail = "Robert @ Shelter Share <shelter.share.webmaster@gmail.com>";
 
 // Function for grabbing template files
 async function getPubFile(file) {
-	const res = await fetch(`/emailTemplates/${file}`);
+	const res = await fetch(
+		`${NEXT_PUBLIC_PRODUCTION_URL}/emailTemplates/${file}`
+	);
 
 	if (!res.ok) {
 		throw new Error("Network response was not ok");
