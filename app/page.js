@@ -60,7 +60,7 @@ export default async function Home() {
 					{landingPageData.infoSection.map((info, index) => {
 						return (
 							<div
-								key={info.infoText}
+								key={index}
 								className={`${styles.infoText} ${
 									index % 2 === 0 ? styles.even : styles.odd
 								}`}
@@ -86,9 +86,9 @@ export default async function Home() {
 				<div className={styles.featureHeading}>
 					<h2>{landingPageData.featureHeading}</h2>
 				</div>
-				{landingPageData.featureSection.map((feature) => {
+				{landingPageData.featureSection.map((feature, index) => {
 					return (
-						<div key={feature.featureText} className={styles.featureText}>
+						<div key={index} className={styles.featureText}>
 							<AiOutlineCheck />
 							<div className={`${styles.featureContent}`}>
 								<ReactMarkdown>{`${feature.featureText}`}</ReactMarkdown>
@@ -105,9 +105,9 @@ export default async function Home() {
 					<VideoPlayer url={landingPageData.video.url} />
 				</div>
 				<div className={styles.videoText}>
-					{landingPageData.ourStoryContent.map((story) => {
+					{landingPageData.ourStoryContent.map((story, index) => {
 						return (
-							<div className={`${styles.ourStoryContent}`} key={story.richText}>
+							<div className={`${styles.ourStoryContent}`} key={index}>
 								<ReactMarkdown>{`${story.richText}`}</ReactMarkdown>
 							</div>
 						);
