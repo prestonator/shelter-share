@@ -19,12 +19,14 @@ async function getPubFile(file) {
 	const res = await fetch(
 		`${NEXT_PUBLIC_PRODUCTION_URL}/emailTemplates/${file}`
 	);
+	console.log(res);
 
 	if (!res.ok) {
 		throw new Error("Network response was not ok");
 	}
 
 	const data = await res.text();
+	console.log(data);
 	return data;
 }
 
