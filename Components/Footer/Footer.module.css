@@ -26,29 +26,23 @@
 	margin-bottom: var(--size-5);
 }
 
-.footerForm div:nth-last-of-type(3) {
-	display: flex;
-	justify-content: center;
-	gap: var(--size-0-5);
-	.input {
-		border-radius: 5px;
-		padding: var(--size-1) var(--size-1-5);
-	}
-}
-
-.footerForm div:nth-last-of-type(2) {
-	display: flex;
-	width: 100%;
-	.input {
-		border-radius: 5px;
-		width: 100%;
-		padding: var(--size-1) var(--size-1-5);
-	}
-}
-
-.footerForm .button {
-	padding: var(--size-0-5) var(--size-7-5);
+.footerForm .singleInput .input {
 	border-radius: 5px;
+	padding: var(--size-1) var(--size-1-5);
+}
+
+.footerForm > .singleInput {
+	width: 100%;
+}
+
+.footerForm > .singleInput .input {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.footerForm .flexInput {
+	display: flex;
+	gap: var(--size-1);
 }
 
 .footer .socials {
@@ -84,7 +78,7 @@
 
 .footer .submitBody {
 	font: 300 var(--size-1-25) / 1.6 var(--font-body);
-    margin-bottom: var(--size-2-5);
+	margin-bottom: var(--size-2-5);
 	color: var(--color-white);
 }
 

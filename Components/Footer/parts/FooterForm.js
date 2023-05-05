@@ -106,7 +106,7 @@ const FooterForm = () => {
 					className={styles.footerForm}
 					onSubmit={handleSubmit((data) => submitForm(data))}
 				>
-					<div>
+					<div className={styles.singleInput}>
 						<input
 							className={styles.input}
 							type="text"
@@ -115,8 +115,8 @@ const FooterForm = () => {
 						/>
 						<p>{errors.name?.message}</p>
 					</div>
-					<div>
-						<div>
+					<div className={styles.flexInput}>
+						<div className={styles.singleInput}>
 							<input
 								className={styles.input}
 								type="email"
@@ -125,7 +125,7 @@ const FooterForm = () => {
 							/>
 							<p>{errors.email?.message}</p>
 						</div>
-						<div>
+						<div className={styles.singleInput}>
 							<input
 								className={styles.input}
 								type="tel"
@@ -139,7 +139,7 @@ const FooterForm = () => {
 							<p>{errors.phone?.message}</p>
 						</div>
 					</div>
-					<div>
+					<div className={styles.singleInput}>
 						<textarea
 							className={styles.input}
 							placeholder="Please type your message..."
@@ -147,9 +147,9 @@ const FooterForm = () => {
 						/>
 						<p>{errors.message?.message}</p>
 					</div>
-					<div>
+					<div className={styles.singleInput}>
 						<input
-							className={styles.button}
+							className={styles.input}
 							type="submit"
 							value={isSubmitting ? "Sending..." : "Send Message"}
 							disabled={isSubmitting}
