@@ -41,4 +41,5 @@ yarn-error.log*
 yarn.lock
 
 output.txt
+
 .gptignore

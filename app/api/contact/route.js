@@ -13,6 +13,7 @@ const mailConfig = {
 };
 
 const adminEmail = "Robert @ Shelter Share <shelter.share.webmaster@gmail.com>";
+const robertEmail = "Robert @ Shelter Share <RobertW4Info@gmail.com>";
 
 // Function for loading email template files
 async function getPubFile(file) {
@@ -124,7 +125,7 @@ export async function POST(req) {
 	// Admin email data
 	const adminMailData = {
 		from: recipEmail,
-		to: adminEmail,
+		to: `${adminEmail}, ${robertEmail}`,
 		subject: `New Message From ${name}`,
 		text: sendTxt,
 		html: sendHtml,
