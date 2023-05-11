@@ -15,7 +15,11 @@ const AppleStoreIcon = () => (
 const AppleStoreButton = () => {
 	const iosUrl = "https://apps.apple.com/us/app/shelter-share/id1628856947";
 	return (
-		<a href={iosUrl}>
+		<a
+			href={iosUrl}
+			aria-label="Click this button to find out more about Shelter Share's iOS application."
+			target="_blank"
+		>
 			<AppleStoreIcon />
 		</a>
 	);

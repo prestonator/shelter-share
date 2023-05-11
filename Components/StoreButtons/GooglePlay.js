@@ -128,7 +128,11 @@ const GooglePlayButton = () => {
 	const androidUrl =
 		"https://play.google.com/store/apps/details?id=app.bravostudio.A01G3KC94GQWM31XXXPM3K2YNSG&hl=en_US&gl=US";
 	return (
-		<a href={androidUrl}>
+		<a
+			href={androidUrl}
+			aria-label="Click this button to find out more about Shelter Share's Android application."
+			target="_blank"
+		>
 			<GooglePlayStoreIcon />
 		</a>
 	);
