@@ -4,6 +4,7 @@ import NavItem from "@/Components/Navbar/NavItem";
 import { onBtnClick } from "@/utils/helpers";
 import Footer from "@/Components/Footer/Footer";
 import { playfair, sofia } from "@/utils/fonts";
+import GoogleTag from "@/Components/Analytics/GoogleTag";
 
 export const metadata = {
 	title: "Shelter Share",
@@ -21,6 +22,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en" className={`${playfair.variable} ${sofia.variable}`}>
+			<GoogleTag GTM_ID="GTM-M6QRZ75" />
 			<body>
 				<Navbar>
 					<NavItem onBtnClick={onBtnClick} />
