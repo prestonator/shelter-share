@@ -19,6 +19,7 @@ const AppleStoreButton = () => {
 			href={iosUrl}
 			aria-label="Click this button to find out more about Shelter Share's iOS application."
 			target="_blank"
+			id="apple-store-button"
 		>
 			<AppleStoreIcon />
 		</a>

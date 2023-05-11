@@ -132,6 +132,7 @@ const GooglePlayButton = () => {
 			href={androidUrl}
 			aria-label="Click this button to find out more about Shelter Share's Android application."
 			target="_blank"
+			id="google-play-button"
 		>
 			<GooglePlayStoreIcon />
 		</a>
