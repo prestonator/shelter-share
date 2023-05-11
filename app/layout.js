@@ -17,6 +17,15 @@ export const metadata = {
 		shortcut: "/icons/favicon.ico",
 		apple: "/icons/apple-touch-icon.png",
 	},
+	openGraph: {
+		title: "Shelter Share",
+		description:
+			"Shelter Share is an application that provides users with a list of nearby locations that offer shelter during a natural disaster, including community shelters, public buildings, and other safe locations.",
+		url: "https://www.shelter-share.com/",
+		siteName: "Shelter Share",
+		locale: "en-US",
+		type: "website",
+	},
 };
 
 export default function RootLayout({ children }) {
