@@ -18,18 +18,24 @@ const Footer = async () => {
 					<a
 						href="https://www.linkedin.com/in/robert-washington-7855984a"
 						target="_blank"
+						id="linkedin-btn"
+						aria-label="Click this button to find out more about Shelter Share's LinkedIn page."
 					>
 						<BsLinkedin />
 					</a>
 					<a
 						href="https://www.instagram.com/sheltersharewithme/?igshid=YmMyMTA2M2Y%3D"
 						target="_blank"
+						id="instagram-btn"
+						aria-label="Click this button to find out more about Shelter Share's Instagram page."
 					>
 						<BsInstagram />
 					</a>
 					<a
 						href="https://www.facebook.com/ShelterShareOklahoma?mibextid=LQQJ4d"
 						target="_blank"
+						id="facebook-btn"
+						aria-label="Click this button to find out more about Shelter Share's Facebook page."
 					>
 						<BsFacebook />
 					</a>
